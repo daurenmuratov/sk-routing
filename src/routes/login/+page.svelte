@@ -1,9 +1,10 @@
-<script>
+<script lang="ts">
     import { saveAuthStatus } from '../../stores/auth';
 
-    let username = '', password = ''
+    let username: string = '';
+    let password: string = '';
 
-    const login = async () => {
+    const login = async (): Promise<void> => {
         const res = await fetch('http://localhost:3000/api/login', {
             method: 'POST',
             headers: {
@@ -11,7 +12,7 @@
             },
             body: JSON.stringify({ username, password }),
             credentials: 'include'
-        })
+        });
 
         if (res.ok) {
             const data = await res.json()

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
     import { authenticated, loadAuthStatus } from '../../stores/auth';
 

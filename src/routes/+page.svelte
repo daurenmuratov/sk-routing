@@ -1,14 +1,15 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
     import { authenticated } from '../stores/auth';
 
-    let users = '';
-    let auth = false;
-    authenticated.subscribe(value => { auth = value });
+    let users: string | any[] = '';
+    let auth: boolean = false;
+
+    authenticated.subscribe((value: boolean) => { auth = value });
 
     onMount(async () => {
         try {
-            const res = await fetch('http://localhost:3000/api/users', {
+            const res: Response = await fetch('http://localhost:3000/api/users', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

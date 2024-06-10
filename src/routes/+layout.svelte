@@ -1,15 +1,15 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
     import { authenticated, loadAuthStatus, saveAuthStatus } from '../stores/auth';
 
-    let currentUsername = '';
+    let currentUsername: string = '';
 
     // Load authentication status from localStorage when component mounts
     onMount(() => {
         loadAuthStatus();
     });
 
-    const on_logout = async () => {
+    const on_logout = async (): Promise<void> => {
         const res = await fetch('http://localhost:3000/api/logout', {
             method: 'POST',
             headers: {
@@ -19,7 +19,7 @@
         });
 
         if (res.ok) {
-            const data = await res.json();
+            const data: any = await res.json();
             console.log(data);
             saveAuthStatus(false);
             window.location.href = '/logout';

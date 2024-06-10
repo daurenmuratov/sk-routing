@@ -1,28 +1,26 @@
-<script>
-    import { authenticated } from "../../stores/auth"
+<script lang="ts">
+    import { authenticated } from "../../stores/auth";
 
-    let username = '', email = '', password = ''
+    let username: string = '';
+    let email: string = '';
+    let password: string = '';
 
-    let auth = false
-    authenticated.subscribe(value => { auth = value })
+    let auth: boolean = false;
+    authenticated.subscribe((value: boolean) => { auth = value });
 
-    const submit = async () => {
-        const res = await fetch('http://localhost:3000/api/register', {
+    const submit = async (): Promise<void> => {
+        const res: Response = await fetch('http://localhost:3000/api/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-              username,
-              email,
-              password
-            })
-        })
+            body: JSON.stringify({ username, email, password })
+        });
 
         if (res.ok) {
-            const data = await res.json()
-            console.log(data)
-            window.location.href = '/login'
+            const data: any = await res.json();
+            console.log(data);
+            window.location.href = '/login';
         }
     }
 </script>

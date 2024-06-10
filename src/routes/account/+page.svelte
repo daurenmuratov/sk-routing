@@ -1,12 +1,13 @@
-<script>
-    let file;
+<script lang="ts">
+    let file: File | null = null;
     const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
-    const handleFileChange = (event) => {
-        file = event.target.files[0];
+    const handleFileChange = (event: Event): void => {
+        const target = event.target as HTMLInputElement;
+        file = target.files ? target.files[0] : null;
     };
 
-    const uploadFile = async () => {
+    const uploadFile = async (): Promise<void> => {
         if (!file) {
             alert("Please select a file first!");
             return;
@@ -37,7 +38,7 @@
                 alert(`File upload failed: ${error.message}`);
             }
         } catch (error) {
-            alert("An error occurred: " + error.message);
+            alert("An error occurred: " + (error as Error).message);
         }
     };
 </script>
