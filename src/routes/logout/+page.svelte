@@ -1,1 +1,1 @@
-<p>Logout successfully. See you!!</p>
+<p>Выход успешно совершен!!!</p>
