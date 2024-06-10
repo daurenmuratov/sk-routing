@@ -55,7 +55,7 @@
                     <a class="nav-link" href="/profile">{currentUsername}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" on:click={on_logout}>Выход</a>
+                    <button class="nav-link" on:click={on_logout} type="button" aria-label="Выход">Выход</button>
                 </li>
             </ul>
         {/if}
